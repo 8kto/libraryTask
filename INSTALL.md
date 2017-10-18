@@ -11,8 +11,10 @@ git clone https://github.com/8kto/libraryTask.git
 cd libraryTask
 composer install
 ```
+Note: Don`t touch locale parameter — there is only 'en' translations available.  
+
 3) If any troubles with database parameters occured you can tweak it in ``app/config/parameters.yml``
-4) Run ``install/symfony_post_install.sh `` to set file and directories permissions.
+4) Run ``install/symfony_post_install.sh `` to set file and directories permissions. It will update vendor packages also.
 5) Import tables structure and test data from ``install/structure-demo-data.sql``.
 6) For updating cache and assets run next commands:
 ```sh
