@@ -23,7 +23,7 @@ php app/console server:run
 ``` 
 Now you can access app via the http://localhost:8000/ 
 
-Also you can access admin dashboard on URL /admin/.
+Also you can access admin dashboard on URL ``/admin/``.
 Credentials are:
 ```txt
 Login: admin
