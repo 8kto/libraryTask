@@ -1,0 +1,29 @@
+{% extends '@Library/common/layout.html.twig' %}
+{% block body %}
+
+    {# Loop over last books cards #}
+    <div class="row">
+        {% for book in last_books %}
+            <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <header>
+                            <h4 class="card-title">
+                                <a href="#">{{ book.title }}</a>
+                            </h4>
+                            <h5>
+                                by <a href="#">{{ book.author }}</a>
+                            </h5>
+                        </header>
+
+                        <p class="card-text">{{ book.description|length > 150 ? book.description|slice(0, 150) ~ '...' : book.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- /.row -->
+
+{% endblock %}
+

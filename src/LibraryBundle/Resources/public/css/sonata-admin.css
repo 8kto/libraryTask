@@ -1,0 +1,21 @@
+span[id$=photo].field-short-description{
+    width:100%
+}
+.login-logo img{
+    border-radius: 50%;
+    min-width:120px;
+    border:3px solid #ddd
+}
+.main-header .logo img{
+    border-radius: 50%;
+}
+.login-page, .register-page{
+    background: #f9f9f9
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header>img{
+    width:120px;
+    height:120px;
+}
+.sonata-ba-list-field-header-batch, .cell-id{
+    width:20px
+}

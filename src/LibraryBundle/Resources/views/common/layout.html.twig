@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% if content_title is not defined %}
+    {% set content_title = '' %}
+{% endif %}
+
+{% if sub_header is not defined %}
+    {% set sub_header = '' %}
+{% endif %}
+
+<head>
+    <title>
+        {% block title %}
+            {{ page_title is defined? page_title : content_title }}
+        {% endblock %} — {{ page_title_sfx }}
+    </title>
+    {% block metatags %}
+        <meta name="description" content="{{ site_description }}">
+        <meta name="author" content="Igor Ivlev">
+        <meta name="title" content="{{ site_title }}"/>
+    {% endblock %}
+
+    {% block stylesheets %}
+        {% stylesheets '@common_css' filter='cssrewrite' filter='?uglifycss' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+    <!-- Fav and touch icons -->
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('bundles/library/img/arcelor-logo-32.jpg') }}"/>#}
+    <!-- Javascript -->
+    <script>const APP_ENV = '{{ app.environment }}';</script>
+
+
+    {% block javascripts %}
+        {% javascripts '@common_js'  filter='?uglifyjs' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">{{ site_name }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('book_list') }}">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('author_list') }}">Authors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about') }}">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">{{ content_title }}
+        <small>{{ sub_header }}</small>
+    </h1>
+
+    {% block message_container %}
+        {# Сообщения #}
+        {% if app.request.hasPreviousSession and app.session.flashBag|length %}
+            {% for key in app.session.flashBag.keys() %}
+                {% for msg in app.session.flashBag.get(key) %}
+                    <div class="alert alert-dismissible alert-{{ key == 'error'? 'danger' : key }}">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                        {{ msg|trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+        {# /Сообщения #}
+    {% endblock %}
+
+    {% block body %}{% endblock %}
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">{{ footer_text|raw }}</p>
+        <p class="m-0 text-center text-white">{{ site_description }}</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+{#                        #}
+{#     END OF VISUAL      #}
+{#                        #}
+
+<!--  Alert message -->
+<div id="alert-ct" class="modal fade in" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Message</h4>
+            </div>
+            <div class="modal-body lead">
+                <div class="modal-body-content"></div>
+                <div class="text-center">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="prompt-ct" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Notice</h4>
+            </div>
+            <div class="modal-body lead">
+                <div class="modal-body-content"></div>
+                <div class="text-center">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="global-ajax-loader" class="ghost">
+    <i class="fa fa-spin fa-circle-o-notch"></i>
+</div>
+
+
+</body>
+</html>

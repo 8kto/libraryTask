@@ -1,0 +1,47 @@
+Text: Текст
+User: Пользователь
+Address: Адрес
+Action: Действия
+Type: Тип
+Name: Имя
+Weight: Вес
+Created: Создан
+Readable Status: Статус
+Status: Статус
+Not selected: —
+At Date: Дата
+Description: Описание
+
+sonata_profile_title: Редактирование профиля
+
+"Bad credentials.": Неправильное имя пользователя или пароль
+security:
+    login:
+        username: "Логин или e-mail"
+        password: "Пароль"
+        remember_me: Запомнить меня
+        submit: Войти
+        remind: Напомнить пароль
+        or: или
+        create_acc: Создать аккаунт
+        login: Войти
+        social_login: Войдите через профиль
+
+roles:
+    user: Пользователь
+    admin: Администратор
+    moder: Модератор
+    manager: Менеджер
+#ROLE_USER: Пользователь
+
+
+"Not Found": Не найдено                 #404
+"Bad Request": Неверный запрос          #400
+"Forbidden": Запрещено                  #403
+Unauthorized: Неавторизованный запрос   #401
+"Internal Server Error": Ошибка сервера #500
+
+
+Author: Автор
+Created At: Создан
+State: Состояние

@@ -1,0 +1,7 @@
+#  Add directives
+RewriteEngine on
+
+#  Change root directory to "root" folder
+RewriteCond %{THE_REQUEST} ^GET\ web/
+RewriteRule ^root/(.*) /$1 [L,R=301]
+RewriteRule !^web/ web%{REQUEST_URI} [L]

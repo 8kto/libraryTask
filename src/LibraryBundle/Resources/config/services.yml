@@ -1,0 +1,17 @@
+services:
+#    library.example:
+#        class: LibraryBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    library.admin.book:
+        class: LibraryBundle\Admin\BookAdmin
+        arguments: [~, LibraryBundle\Entity\Book, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Book }
+        public: true
+
+    library.admin.author:
+        class: LibraryBundle\Admin\AuthorAdmin
+        arguments: [~, LibraryBundle\Entity\Author, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Author }
+        public: true

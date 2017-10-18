@@ -1,0 +1,40 @@
+{% extends '@Library/common/layout.html.twig' %}
+
+{% block title %}
+    {{ status_text|trans }}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="h3">Ошибка {{ status_code }}: {{ status_text|trans }}</h1>
+
+    <p class="debug hidden">
+        {{ status_code }} {{ status_text }}
+    </p>
+
+    <div class="row">
+        <div class="col-lg-6">
+            {% if status_code == 403 %}
+                {% set img_url = asset('bundles/library/img/error-cat-2.jpg') %}
+            {% elseif status_code == 401 %}
+                {% set img_url = asset('bundles/library/img/error-dog-1.jpg') %}
+            {% elseif status_code == 404 %}
+                {% set img_url = asset('bundles/library/img/error-cat-3.jpg') %}
+            {% elseif status_code == 500 %}
+                {% set img_url = asset('bundles/library/img/error-cat-1.jpg') %}
+            {% else %}
+                {% set img_url = asset('bundles/library/img/cheetas.jpg') %}
+            {% endif %}
+
+            <img src="{{ img_url }}" class="media-object img-thumbnail"/>
+        </div>
+
+        <div class="col-lg-6">
+            <p class="lead">
+                Easy! <br>
+                We will read logs and fix it.
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

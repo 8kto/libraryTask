@@ -1,0 +1,20 @@
+<div class="widget grid-outer">
+    <div class="widget-grid-container">
+
+        <div class="panel-group">
+            <div class="panel panel-default filter-widget">
+                <div id="collapseSearch" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body">
+                        {#{{ grid_search(grid) }}#}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ grid(grid, '@Library/APYDataGridBundle/blocks_js.jquery.html.twig', 'data-grid-ct', tpl_params) }}
+    </div>
+</div>
+
+{#{% block grid_filters %}{% endblock %}#}
+
+
