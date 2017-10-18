@@ -1,5 +1,6 @@
 <?php
 
+use JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -42,6 +43,9 @@ class AppKernel extends Kernel
 
             // Grids
             new APY\DataGridBundle\APYDataGridBundle(),
+
+            // CRUD gen
+            new JordiLlonchCrudGeneratorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'beta'], true)) {

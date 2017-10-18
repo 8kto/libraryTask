@@ -56,8 +56,6 @@ class Book
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     * @Assert\Type("\DateTime")
      * @GRID\Column(title="Added",format="d/m/Y (H:i:s)")
      *
      * @var \DateTime

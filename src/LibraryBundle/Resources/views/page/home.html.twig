@@ -6,11 +6,15 @@
         {% for book in last_books %}
             <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <a href="{{ path('book_show', {id: book.id}) }}">
+                        <img class="card-img-top"
+                             src="{{ asset('bundles/library/img/color-' ~ random([1,2,3,4,5])  ~ '.png') }}"
+                             alt="" title="{{ book.title }}">
+                    </a>
                     <div class="card-body">
                         <header>
                             <h4 class="card-title">
-                                <a href="#">{{ book.title }}</a>
+                                <a href="{{ path('book_show', {id: book.id}) }}">{{ book.title }}</a>
                             </h4>
                             <h5>
                                 by <a href="#">{{ book.author }}</a>

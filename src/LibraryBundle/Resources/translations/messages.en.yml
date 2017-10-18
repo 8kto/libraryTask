@@ -1,0 +1,10 @@
+flash:
+    create:
+        success: Succesfully saved.
+        error: Save error.
+    update:
+        success: Succesfully updated.
+        error: Update error.
+    delete:
+        success: Succesfully deleted.
+        error: Delete error.

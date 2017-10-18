@@ -2,13 +2,14 @@
 
 namespace LibraryBundle\Controller;
 
+use APY\DataGridBundle\Grid\Action\RowAction;
 use APY\DataGridBundle\Grid\Column\ActionsColumn;
 use APY\DataGridBundle\Grid\Source\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BaseController extends Controller
 {
-    protected function buildGruid($entityName)
+    protected function buildGruid($entityName, $routePfx)
     {
         $source = new Entity($entityName);
 
@@ -32,7 +33,7 @@ class BaseController extends Controller
         // $rowActionEdit->setAttributes(['linkClass' => 'edit-link', 'dataIcon' => 'edit']);
         // $grid->addRowAction($rowActionEdit);
 
-        // Просмотр для каждой строки
+        // Show link
         // $rowActionShow = new RowAction('Show', "{$routePfx}_show");
         // $rowActionShow->setRouteParameters(['id']);
         // $rowActionShow->setColumn('actions_column');
@@ -40,19 +41,6 @@ class BaseController extends Controller
         // $grid->addRowAction($rowActionShow);
 
         // $grid->addMassAction(new DeleteMassAction(true));
-
-        if ($grid->hasColumn('id')) {
-            // $grid->getColumn('id')->setSafe(false)->manipulateRenderCell(
-            //     function ($value, $row, $router) use ($routePfx) {
-            //         $route = $router->generate(
-            //             "{$routePfx}_show",
-            //             ['id' => $row->getField('id')]
-            //         );
-            //
-            //         return "<a href='$route' class='link-show-row'>$value</a>";
-            //     }
-            // );
-        }
 
         return $grid;
     }

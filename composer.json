@@ -28,7 +28,8 @@
         "sonata-project/intl-bundle": "^2.2",
         "symfony/assetic-bundle": "^2.8",
         "apy/datagrid-bundle": "^3.0",
-        "white-october/pagerfanta-bundle": "^1.0"
+        "white-october/pagerfanta-bundle": "^1.0",
+        "jordillonch/crud-generator": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
