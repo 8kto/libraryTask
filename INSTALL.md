@@ -14,10 +14,15 @@ composer install
 3) If any troubles with database parameters occured you can tweak it in ``app/config/parameters.yml``
 4) Run ``install/symfony_post_install.sh `` to set file and directories permissions.
 5) Import tables structure and test data from ``install/structure-demo-data.sql``.
-6) Run ``php app/console cache:clear`` for removing old cache if any. Also it checks if installation is valid.
+6) For updating cache and assets run next commands:
+```sh
+php app/console cache:clear
+php app/console assets:install --symlink
+php app/console assetic:dump
+```
 7) Configure your webserver to display web application in browser. Check ``install/library.local.conf`` for Apache virtual host config.
 Another option is to use web server provided by Symfony, which in turn uses the built-in web server provided by PHP.
-Execute this command:
+Execute this command: 
 ```sh
 php app/console server:run
 ``` 
