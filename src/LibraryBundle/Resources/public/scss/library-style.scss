@@ -1,11 +1,15 @@
 body > .container {
     min-height: 400px;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
 }
 
 .py-5 {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
+    position: fixed;
+    bottom:0;
+    width:100%;
+    z-index: 999;
 }
 
 .card {
@@ -54,9 +58,11 @@ body > .container {
 td.cell-actions-column {
     width: 20px;
 }
-td.grid-column-author_lastName{
+
+td.grid-column-author_lastName {
     width: 250px;
 }
+
 td.grid-column-created {
     width: 200px;
 }
@@ -69,4 +75,18 @@ td.grid-column-created {
 
 textarea.form-control {
     min-height: 200px;
+}
+
+.text-gray {
+    color: #aaa;
+
+}
+
+a.text-gray {
+    color: #fff;
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px dashed;
+    }
 }

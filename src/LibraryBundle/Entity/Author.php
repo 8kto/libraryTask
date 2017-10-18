@@ -26,8 +26,6 @@ class Author
     /**
      * @ORM\Column(type="string", length=64)
      * @Assert\NotBlank()
-     * @Assert\GreaterThan(1)
-     * @Assert\LessThanOrEqual(64)
      * @GRID\Column(filterable=true, operatorsVisible=false, title="First Name")
      *
      * @var string
@@ -37,8 +35,6 @@ class Author
     /**
      * @ORM\Column(type="string", length=64)
      * @Assert\NotBlank()
-     * @Assert\GreaterThan(1)
-     * @Assert\LessThanOrEqual(64)
      * @GRID\Column(filterable=true, operatorsVisible=false, title="Last Name")
      *
      * @var string

@@ -8,6 +8,13 @@
     {% set sub_header = '' %}
 {% endif %}
 
+{% macro is_curr_route(route, slug) %}
+    {%- if (app.request.get('_route') == route) or (slug and slug in app.request.attributes.get('_route_params')) -%}
+        {{- 'active' -}}
+    {%- endif -%}
+{% endmacro %}
+{% import _self as tpl %}
+
 <head>
     <title>
         {% block title %}
@@ -44,24 +51,24 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">{{ site_name }}</a>
+        <a class="navbar-brand" href="{{ path('home') }}">{{ site_name }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item {{ tpl.is_curr_route('home')? 'active' :'' }}">
                     <a class="nav-link" href="{{ path('home') }}">Home
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ tpl.is_curr_route('book_list')? 'active' :'' }}">
                     <a class="nav-link" href="{{ path('book_list') }}">Books</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ tpl.is_curr_route('author_list')? 'active' :'' }}">
                     <a class="nav-link" href="{{ path('author_list') }}">Authors</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ tpl.is_curr_route('about')? 'active' :'' }}">
                     <a class="nav-link" href="{{ path('about') }}">About</a>
                 </li>
             </ul>
@@ -103,8 +110,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">{{ footer_text|raw }}</p>
-        <p class="m-0 text-center text-white">{{ site_description }}</p>
+        <p class="m-0 text-center text-gray">{{ footer_text|raw }}</p>
     </div>
     <!-- /.container -->
 </footer>
@@ -159,7 +165,6 @@
 <div id="global-ajax-loader" class="ghost">
     <i class="fa fa-spin fa-circle-o-notch"></i>
 </div>
-
 
 </body>
 </html>

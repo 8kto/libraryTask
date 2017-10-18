@@ -1,0 +1,62 @@
+{% extends '@Library/common/layout.html.twig' %}
+
+{% block page_title %}
+    {% set content_title = entity.shortenedName %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <form class="form-vertical">
+        <fieldset>
+            <div class="control-group">
+                <label class="control-label"><strong>Firstname</strong></label>
+                <span class="input-xlarge uneditable-input">{{ entity.firstName }}</span>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><strong>Lastname</strong></label>
+                <span class="input-xlarge uneditable-input">{{ entity.lastName }}</span>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"><strong>Books</strong></label>
+                <ul>
+                    {% for book in entity.books %}
+                        <li><span class="input-xlarge uneditable-input">
+                            <a href="{{ path('book_show', {id: book.id}) }}">
+                                {{ book.title }}
+                                </a>
+                            </span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+        </fieldset>
+    </form>
+
+    <hr>
+    <div class="fullview-controls">
+
+        <div class="float-left">
+            <a class="btn btn-primary" href="{{ path('author_list') }}">
+                List all
+            </a>
+        </div>
+        <div class="float-left">
+            <a class="btn btn-success" href="{{ path('author_edit', { 'id': entity.id }) }}">
+                {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+            </a>
+        </div>
+        <div class="float-left">
+            <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit"
+                        onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle')|escape('js') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

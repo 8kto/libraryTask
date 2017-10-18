@@ -28,6 +28,7 @@ class Book
      *     inversedBy="books",
      *     cascade={"persist"}
      * )
+     * @GRID\Column(field="author.id", visible=false)
      * @GRID\Column(field="author.lastName", title="Author", filterable=true, operatorsVisible=false)
      *
      * @var Author

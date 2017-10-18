@@ -1,5 +1,36 @@
 {% extends '@Library/common/layout.html.twig' %}
 {% block body %}
-    <p><strong>Book Library</strong> is a test app which I have done for <strong>Kurzor</strong>.</p>
+    <p>A test Symfony project for Kurzor.<br>
+        Assignment described below.</p>
+    <p>
+        Author: Igor Ivlev (<a href="https://axisful.info">axisful.info</a>)
+    </p>
+    <h2><a id="Summary_4"></a>Summary</h2>
+    <p>We would like to handle a simple library of books. We would like to:</p>
+    <h2><a id="1_List_all_the_books_we_have_7"></a>1. List all the books we have</h2>
+    <p>Will create a simple list of book information. The best way is to utilize some data grid. We will need
+        pagination, no need of filtering, sorting or entries per page selection. List will contain information:</p>
+    <p><code>title</code>, <code>author</code>, book <code>description</code> limited to 200 characters if it is longer
+        than that, <code>date and time</code> when entry was added.</p>
+    <h2><a id="2_We_would_like_to_add_and_edit_book_information_12"></a>2. We would like to add and edit book
+        information</h2>
+    <p>So create 2 actions: one to <strong>add</strong> and one to <strong>edit</strong> the book information</p>
+    <p>Each book has title, author, book description and date time entry was added (this one is set automatically when
+        book is created).</p>
+    <p>We need to have form <strong>validation</strong> like this:</p>
+    <ul>
+        <li><code>title</code> - required information, string at least 3 characters, at most 127</li>
+        <li><code>author</code> - required information, string at least 1 characters, at most 127</li>
+        <li><code>description</code> - textarea (pure text - not HTML) not required information, at most 1000 characters
+        </li>
+    </ul>
+    <h2><a id="3_Database_schema_will_be_in_separate_SQL_file_together_with_some_test_data_23"></a>3. Database schema
+        will be in separate SQL file together with some test data.</h2>
+    <p>If framework supports migrations or some other way of dealing with SQL schema or sample data use this
+        approach</p>
+    <h2><a id="4_Create_README_file_26"></a>4. Create README file</h2>
+    <p>Describe the steps programmer need to do to run test project</p>
+    <p>If you want to use some ORM like Doctrine feel free to use it. If you prefer to use some other db layer feel free
+        to use it also.</p>
 {% endblock %}
 

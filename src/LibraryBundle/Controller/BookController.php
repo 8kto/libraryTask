@@ -48,6 +48,18 @@ class BookController extends BaseController
             }
         );
 
+        $authorRoutePfx = 'author';
+        $grid->getColumn('author.lastName')->setSafe(false)->manipulateRenderCell(
+            function ($value, $row, $router) use ($authorRoutePfx) {
+                $route = $router->generate(
+                    "{$authorRoutePfx}_show",
+                    ['id' => $row->getField('author.id')]
+                );
+
+                return "<a href='$route' class='link-show-row'>$value</a>";
+            }
+        );
+
         $gridResponse = $this->render(self::GRID_LIST_TPL, [
             'grid'       => $grid,
             'tpl_params' => ['route_name_prefix' => $this->routePfx],

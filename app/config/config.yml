@@ -12,7 +12,7 @@ parameters:
     from_email: noresponse@library.local
     site_title: '<strong title="%s">Book Library</strong>'
     site_description: 'Electronic book storage'
-    footer_text: '&copy; 2017 Book Library'
+    footer_text: '&copy; 2017 Book Library, <a class="text-gray" href="https://axisful.info">Igor Ivlev</a>'
     page_title_sfx: 'Book Library'
 
 

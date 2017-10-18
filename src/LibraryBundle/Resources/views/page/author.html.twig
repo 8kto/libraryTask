@@ -1,5 +1,9 @@
 {% extends '@Library/common/layout.html.twig' %}
 
 {% block body %}
+    <p class="well">
+        <a href="{{ path('author_new') }}" class="btn btn-primary">Add new</a>
+    </p>
+
     {{ grid|raw }}
 {% endblock body %}

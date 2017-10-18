@@ -1,0 +1,30 @@
+{% extends '@Library/common/layout.html.twig' %}
+
+{% block body %}
+
+    <form class="well" action="{{ path('author_update', { 'id': entity.id }) }}"
+          method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT"/>
+        {% do edit_form.children['books'].setRendered() %}
+        {{ form_widget(edit_form) }}
+        <button type="submit"
+                class="btn btn-success">Save
+        </button>
+    </form>
+    <hr>
+    <div class="fullview-controls clearfix">
+        <div class="float-left">
+            <a class="btn btn-primary" href="{{ path('author_list') }}">
+                {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+            </a>
+        </div>
+        <div class="float-left">
+            <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit"
+                        onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle')|escape('js') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

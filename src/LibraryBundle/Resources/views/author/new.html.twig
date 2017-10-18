@@ -1,0 +1,24 @@
+{% extends '@Library/common/layout.html.twig' %}
+
+{% block page_title %}
+    {% set content_title = 'views.new.creation'|trans({'%entity%': 'Author'}, 'JordiLlonchCrudGeneratorBundle') %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <form class="well" action="{{ path('author_create') }}" method="post" {{ form_enctype(form) }}>
+        {% do form.children['books'].setRendered() %}
+        {{ form_widget(form) }}
+        <button type="submit"
+                class="btn btn-success">{{ 'views.new.create'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+    </form>
+
+    <div class="fullview-controls clearfix">
+        <div class="float-left">
+            <a class="btn btn-primary" href="{{ path('author_list') }}">
+                List all
+            </a>
+        </div>
+    </div>
+{% endblock %}
